@@ -9,13 +9,22 @@ pipeline {
         }
         stage('Test') {
             steps {
-                // Add test steps here
-                sh 'echo "Testing..."'
+                from main import StudentsInMLOps
+                
+                def test_enrollStudents():
+                    students = StudentsInMLOps()
+                    students.enrollStudents(5)
+                    assert students.getTotalStrength() == 5
+                
+                def test_dropStudents():
+                    students = StudentsInMLOps()
+                    students.enrollStudents(10)
+                    students.dropStudents(3)
+                    assert students.getTotalStrength() == 7
             }
         }
         stage('Deploy') {
             steps {
-                // Add deployment steps here
                 sh 'echo "Deploying..."'
             }
         }
