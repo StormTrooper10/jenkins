@@ -10,7 +10,7 @@ pipeline {
         stage('Test') {
     steps {
             sh 'pip install pytest' // Install pytest if not already installed
-            sh 'pytest' // Run pytest command to execute tests
+            sh 'pytest test.py' // Run pytest command to execute tests
         }
     }
 
